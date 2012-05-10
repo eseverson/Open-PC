@@ -1,0 +1,83 @@
+<div id="submissions">
+	[% IF type == 1 %]
+		<span class="button_container"><a id="clear_submissions">Clear All Submissions</a></span>
+		<div style="height: 5px;">&nbsp;</div>
+	[% END %]
+	
+	[% 
+		judgements = {
+			'0' => "Not Yet Judged",
+			'10' => "Compile Error",
+			'20' => "Runtime Error",
+			'30' => "Time Limit Exceeded",
+			'40' => "Wrong Answer",
+			'100' => "Accepted",
+		}
+	%]
+	[% 
+		colors = {
+			'0' => "yellow",
+			'10' => "red",
+			'20' => "red",
+			'30' => "red",
+			'40' => "red",
+			'100' => "green",
+		}
+	%]
+	
+	<div>
+		<table id="submissions_table" border="1" cellspacing="0">
+			<tr id="submission_row_template" style="display: none;">
+				<td class="submission_time"></td>
+				<td class="s_id"></td>
+				<td class="p_id"></td>
+				[% IF type == 1 %]
+					<td class="u_id"></td>
+					<td class="username"></td>
+				[% END %]
+				<td class="problemname"></td>
+				<td class="judgement"></td>
+			</tr>
+			
+			<tr class="header_row">
+				<th style="width: 120px;">Submission Time</th>
+				<th style="width: 100px;">Submission ID</th>
+				<th style="width: 75px;">Problem ID</th>
+				[% IF type == 1 %]
+					<th style="width: 60px;">User ID</th>
+					<th>Username</th>
+				[% END %]
+				<th>Problem Name</th>
+				<th>Judgement</th>
+				[% IF type == 1 %]
+					<th style="width: 16px; border: none;"></th>
+				[% END %]
+			</tr>
+			[% FOREACH sub IN submissions %]
+				[% judgement = sub.judgement %]
+				<tr id="sub_row_[% sub.s_id %]" class="[% colors.$judgement %]">
+					<td class="s_id center">[% sub.submission_time %]</td>
+					<td class="s_id center">[% sub.s_id %]</td>
+					<td class="p_id center">[% sub.p_id %]</td>
+					[% IF type == 1 %]
+						<td class="u_id center">[% sub.u_id %]</td>
+						<td class="username">[% sub.username %]</td>
+					[% END %]
+					<td class="problemname">[% sub.name %]</td>
+					<td class="judgement">[% judgements.$judgement %]</td>
+					[% IF type == 1 %]
+						<td class="sub-mod-buttons" style="border:none; background-color: #FFF;">
+							<div style="display:inline-block;">
+								<span value="[% sub.s_id %]" class="submission-delete-button ui-icon ui-icon-trash sub-mod-buttons"><span>
+							</div>
+						</td>
+					[% END %]
+				</tr>
+			[% END %]
+		</table>
+	</div>
+	[% PROCESS submission_dialogs.tt %]
+
+	
+</div>
+

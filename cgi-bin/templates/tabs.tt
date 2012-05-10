@@ -1,0 +1,37 @@
+[% USE HTML %]
+[% types = {
+		'1' => 'Admin',
+		'2' => 'Judge',
+		'3' => 'Team',
+	 }
+%]
+			
+<div id="tabs">
+	<div style="height: 3px;">&nbsp;</div>
+	<div class="header-line">&nbsp;Welcome to the competition, <strong>[% HTML.escape(user) %].</strong></div>
+	<div class="header-line right">Your account type is: <strong>[% HTML.escape(types.$type) %]</strong> - <a href="/~evan/cgi-bin/login.pl?action=logout">Logout</a>&nbsp;</div>
+	<div style="height: 5px;">&nbsp;</div>
+
+	<ul>
+	[% IF type == 1 %]
+		[%# <li><a href="#admin"><span>Administration</span></a></li> %]
+		<li><a href="#users"><span>Users</span></a></li>
+	[% END %]
+		<li><a href="#problems"><span>Problems</span></a></li>
+		[%# <li><a href="#clarifications"><span>Clarifications</span></a></li> %]
+		<li><a href="#submissions"><span>Submissions</span></a></li>
+		<li><a href="#scoreboard"><span>Scoreboard</span></a></li>
+	</ul>
+	[% IF type == 1 %]
+		[%# PROCESS admin_tab.tt %]
+	[% END %]
+	[% IF type != 3 %]
+		[% PROCESS users_tab.tt %]
+	[% END %]
+	
+	[% PROCESS problems_tab.tt %]
+	[%# PROCESS clarifications_tab.tt %]
+	[% PROCESS submissions_tab.tt %]
+	[% PROCESS scoreboard_tab.tt %]
+	
+</div>

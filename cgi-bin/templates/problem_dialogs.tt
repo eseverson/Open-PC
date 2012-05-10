@@ -1,0 +1,151 @@
+[% IF type == 1 %]
+	<div id="create_problem" class="ui-widget-content ui-corner-all" title="Create Problem">
+		[% USE CGI;
+			CGI.start_multipart_form(
+				id => 'create_problem_form',
+				action => 'javascript:true;',
+				enctype => 'multipart/form-data',
+			);
+		%]
+			<input type="hidden" name="action" value="create_problem">
+			<table border="0">
+				<tr>
+					<td width="130"><strong>Problem Name</strong></td>
+					<td>
+						<input type="text" name="problemname" size="40" maxlength="30"	class="c_problem" />
+					</td>
+					<td id="c_problemname_req" class="req problems"></td>
+				</tr>
+				<tr>
+					<td width="130"><strong>Problem Input</strong></td>
+					<td>
+						<input type="file" name="problem_input" size="40" class="c_problem" />
+					</td>
+					<td id="p_input_req" class="req problems"></td>
+				</tr>
+				<tr>
+					<td width="130"><strong>Problem Output</strong></td>
+					<td>
+						<input type="file" name="problem_output" size="40" class="c_problem" />
+					</td>
+					<td id="c_output_req" class="req problems"></td>
+				</tr>
+			</table>
+			<input id="c_problem_keep" class="c_problem" type="checkbox" >Keep Open</input>
+			<img class="c_loading problem" src="/~evan/images/ajax-loader.gif" style="display: none;"/>
+			<div id="createProblemError" class="c_problem problems ">
+				<div id="createProblemErrorMessage" class= "c_problem ui-state-error" style="display:none;"></div>
+			</div>
+		[% USE CGI;
+			CGI.end_form;
+		%]
+	</div>
+
+	<div id="modify_problem" class="ui-widget-content ui-corner-all" title="Modify Problem">
+		[% USE CGI;
+			CGI.start_multipart_form(
+				id => 'modify_problem_form',
+				action => 'javascript:true;',
+			);
+		%]
+			<input type="hidden" name="action" value="modify_problem">
+			<input type="hidden" name="p_id" id="modify_problem_p_id" value="">
+
+			<table border="0">
+				<tr>
+					<td width="130"><strong>Problem Name</strong></td>
+					<td>
+						<input type="text" name="problemname" size="40" maxlength="30"	class="m_problem" />
+					</td>
+					<td id="m_problemname_req" class="req problems"></td>
+				</tr>
+				<tr>
+					<td width="130"><strong>Problem Input</strong></td>
+					<td>
+						<input type="file" name="problem_input" size="40" class="m_problem" />
+					</td>
+					<td id="p_input_req" class="req problems"></td>
+				</tr>
+				<tr>
+					<td width="130"><strong>Problem Output</strong></td>
+					<td>
+						<input type="file" name="problem_output" size="40" class="m_problem" />
+					</td>
+					<td id="m_output_req" class="req problems"></td>
+				</tr>
+			</table>
+			<img class="m_loading problem" src="/~evan/images/ajax-loader.gif" style="display: none;"/>
+			<div id="createProblemError" class="m_problem problems ">
+				<div id="createProblemErrorMessage" class= "m_problem ui-state-error" style="display:none;"></div>
+			</div>
+		[% USE CGI;
+			CGI.end_form;
+		%]
+	</div>
+
+	<div id="delete_problem" title="Delete Problem?">
+		[% USE CGI;
+			CGI.start_form(
+				id => 'delete_problem_form',
+				action => 'javascript:true;',
+			);
+		%]
+			<input type="hidden" name="action" value="delete_problem">
+			<input type="hidden" name="p_id" id="delete_problem_p_id" value="">
+
+			<p>
+				<span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>
+				This will permanently delete problem <strong id="d_problem_problemname" class="inline">adsfasfdfadsf</strong>. Are you sure?
+			</p>
+			
+			<img class="d_problem_loading" src="/~evan/images/ajax-loader.gif" style="display: none;"/>
+			<div id="deleteProblemError" class="d_problem problems ui-state-error">
+				<div id="deleteProblemErrorMessage" class= "d_problem" style="display:none;"></div>
+			</div>
+		[% USE CGI;
+			CGI.end_form;
+		%]
+	</div>
+
+	<div id="delete_problem_failed" title="Delete failed" class="ui-state-error">
+		<p>
+			<span class="ui-icon ui-icon-notice" style="float:left; margin:0 7px 50px 0;"></span>
+			<strong>Error communicating with the server.  Problem was not deleted.</strong>
+		</p>
+	</div>
+[% END %]
+
+[% IF type == 3 %]
+	<div id="submit_problem" class="ui-widget-content ui-corner-all" title="Submit Problem">
+		[% USE CGI;
+			CGI.start_multipart_form(
+				id => 'submit_problem_form',
+				action => 'javascript:true;',
+			);
+		%]
+			<input type="hidden" name="action" value="submit_problem">
+			<input type="hidden" name="p_id" id="submit_problem_p_id" value="">
+			<p>
+				Select your Java source file.  Your class must be named <strong>Main</strong> and you must not use the package construct.
+			</p>
+			<p>
+				Maximum runtime is <strong>10s.</strong>
+			</p>
+			<table border="0">
+				<tr>
+					<td width="130"><strong>Source File</strong></td>
+					<td>
+						<input type="file" name="source_file" size="40" class="s_problem" />
+					</td>
+					<td id="p_source_req" class="req problems"></td>
+				</tr>
+			</table>
+			<img class="c_loading problem" src="/~evan/images/ajax-loader.gif" style="display: none;"/>
+			<div id="submitProblemError" class="s_problem problems">
+				<div id="submitProblemErrorMessage" class= "s_problem ui-state-error" style="display:none;">&nbsp;</div>
+			</div>
+		[% USE CGI;
+			CGI.end_form;
+		%]
+	</div>
+[% END %]

@@ -1,0 +1,43 @@
+problems tab
+	add interface for showing the input/output of problems to the admin/judge
+	add interface for showing the users their status for each problem and allow them to submit solutions to problems
+submissions
+	interface for admin/judge to see unjudged responses - highlight submission and tab on new submission
+	Adding submissions to a queue
+clarifications
+	show admin/judge open & unanswered clarifications and answered ones seperate - highlight tab and individual clarification on new one recieved
+	interface admin/judge to answer clarifications
+	show users pending and answered clarifications - highlight tab and the actual response when a new response is recieved
+	interface for users to submit clarifications
+admin tab
+	change settigns of contest
+	start/stop
+	reset (delete submissions)
+	scoreboard hiding
+WEBSOCKETS FOR EVERYTHING
+	
+	
+provide feedback when submitting solution
+More filtering of data from the user
+	Data from the user - such as their user id and permitted actions is not trusted, but the data they submit isn't really filtered; the usernames/passwords/problem name/etc. is not necessarily being forced to be a string, the user's submission file is not checked for size (they could be uploading a 1GB file and filling up the server's disk)
+
+Add everything for submitting/answering clarifications
+Rejudge submissions
+	Ability for the admins/judges to compare the output from the user's programs to the expected output for the problem and to manually judge it/mark it correct
+	Ability to be able to ask the system to automatically rerun the submissions and them for correctness - useful if an error is discovered in the input or expected output files which do not fit the problem specification
+Submissions
+	add row to submissions on problem submit
+Better/more logging
+Better/more usable web layout
+Support for submitting solutions in more languages (Currently only supports Java)
+Add an administration page to allow the admin to:
+	Start/stop the contest at will
+	Set start and stop times to automatically open the contest
+	Manage multiple contests:
+		Have one contest for practice then another for the actual competition and easily switch the active contest
+		Have the ability to have multiple contests running at the same time, allowing there to be multiple categories of users, each part of a different contest, or even have users be part of multiple groups so that they are able to submit problems to more than one competition at a time
+	Various other settings for the behavior of the server/contest
+Adding the use of WebSockets to the page so the user does not need to refresh it in order to see updates for things like the scoreboard, clarifications, and contest state (started/stopped/countdown)
+	Make it so that the user is not waiting on the server to respond when submitting a solution
+Clock for timed competition showing time until start/time remaining
+

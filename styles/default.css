@@ -1,0 +1,143 @@
+
+#tabs {
+}
+
+.inline{
+	display: inline;
+}
+
+div.login{
+	width:350px;
+	vertical-align: top;
+}
+
+#maincontent {
+	width:100%;
+	height:50%;
+	vertical-align:middle;
+}
+
+* {
+	padding:1;
+	margin: 1;
+}
+
+td[align=center] {
+	text-align: -webkit-center;
+}
+td[valign=middle]{
+	vertical-align: middle;
+}
+
+body{
+	background-color:#eee;
+}
+.right {
+	float: right !important;
+}
+
+.loading {
+	display: inline;
+}
+
+.header-line {
+	display: inline;
+	font-size: 150%;
+}
+
+.ui-widget { 
+	font-family: Trebuchet MS, Tahoma, Verdana, Arial, sans-serif; 
+	font-size: 11px;
+}
+
+.vcenter {
+	display:table-cell;
+	vertical-align: bottom !important;
+}
+
+.c_user,.d_user,.m_user {
+	display: inline;
+}
+
+#users_table,#submissions_table,#scoreboard_table {
+	width: 100%;
+	border-width: 0px;
+	border-spacing: 0px;
+	border-style: none;
+	border-collapse: collapse;
+	background-color: white;
+}
+
+#users_table td,th {
+	padding: 3px;
+}
+
+.button_container {
+	-webkit-border-vertical-spacing: 5px;
+}
+
+#create_user {
+	display: table;
+	padding: 5px;
+}
+
+input:disabled {
+	background-color: #eee;
+	padding: 3px;
+	border-style: none;
+	border-width: 0px;
+	border-spacing: 0px;
+	border-style: none;
+	border-collapse: collapse;
+}
+
+.problems {
+	color: red;
+}
+
+span.mod-buttons{
+	margin-right: .3em; 
+	display:table-cell; 
+	vertical-align: middle;
+}
+
+td.mod_buttons{
+	border: none !important;
+	border-style: none !important;
+}
+
+tr.red{
+	background-color: #FF9797;
+}
+tr.yellow{
+	background-color: #EDEF85;
+}
+tr.green{
+	background-color: #7CEB98;
+}
+td.center{
+ text-align: center;
+}
+
+div.io{
+	width: 100%;
+	display:table;
+	padding-top: 10px;
+}
+div.io div{
+	display: block;
+	width: 100%;
+	border: 1px solid black;
+	margin: 5px;
+}
+
+div.io span{
+	display: table-cell;
+	width: 50%;
+	padding-right: 8px;
+}
+
+div.io pre{
+	margin: 0.5em;
+	
+}

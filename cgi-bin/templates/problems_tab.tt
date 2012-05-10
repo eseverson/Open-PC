@@ -1,0 +1,83 @@
+<div id="problems">
+	[% IF type == 1 %]
+		<span><a id="add_problem">Add Problem</a></span>
+		<div style="height: 5px;">&nbsp;</div>
+	[% END %]
+
+	<div id="problem_accordion">
+		[% FOREACH p IN problems %]
+			<h3 id="problem_head_[% p.p_id %]" class="problem_header">
+				<a href="#">
+					<div class="inline p_id">[% p.p_id %]</div> - <div class="problemname inline">[% HTML.escape(p.name) %]</div>
+				</a>
+			</h3>
+			<div id="problem_[% p.p_id %]" class="problem_content">
+				
+				<div class="buttons">
+					[% IF type != 3 %]
+						<a value="[% p.p_id %]" class="show_problem">Show/Hide Problem Input/Output</a>&nbsp;
+					[% END %]
+					[% IF type == 1 %]
+						<a value="[% p.p_id %]" class="edit_problem">Edit Problem</a>&nbsp;
+						<a value="[% p.p_id %]" class="del_problem">Delete Problem</a>&nbsp;
+					[% END %]
+					[% IF type == 3 %]
+						<a value="[% p.p_id %]" class="submit_problem">Submit Solution</a>&nbsp;
+					[% END %]
+				</div>
+				
+				[% IF type != 3 %]
+					<div class="io" style="display: none;">
+						<span>
+							<h3>Input</h3>
+							<div class="input ui-corner-all">
+								<pre></pre>
+							</div>
+						</span>
+						<span>
+							<h3>Output</h3>
+							<div class="output ui-corner-all">
+								<pre></pre>
+							</div>
+						</span>
+					</div>
+				[% END %]
+				
+			</div>
+		[% END %]
+	</div>
+	
+	[% IF type == 1 %]
+		<div id="problem_row_template" style="display: none;">
+			<h3 class="problem_header">
+				<a href="#">
+					<div class="inline p_id"></div> - <div class="problemname inline"></div>
+				</a>
+			</h3>
+			<div class="problem_content">
+				<div>
+					<a value="" class="show_problem">Show Problem Input/Output</a>&nbsp;
+					<a value="" class="edit_problem">Edit Problem</a>&nbsp;
+					<a value="" class="del_problem">Delete Problem</a>
+				</div>
+				<div class="io" style="display: none;">
+					<span>
+						<h3>Input</h3>
+						<div class="input ui-corner-all">
+							<pre></pre>
+						</div>
+					</span>
+					<span>
+						<h3>Output</h3>
+						<div class="output ui-corner-all">
+							<pre></pre>
+						</div>
+					</span>
+				</div>
+			</div>
+		</div>
+	[% END %]
+	
+	[% PROCESS problem_dialogs.tt %]
+
+</div>

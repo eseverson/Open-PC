@@ -1,0 +1,51 @@
+<div id="scoreboard">
+
+	<div>
+		<table id="scoreboard_table" border="1" cellspacing="0">
+		[%#
+			<tr id="scoreboard_row_template" style="display: none;">
+				<td class="username"></td>
+				<td class="team_name"></td>
+				<td class="school"></td>
+			</tr>
+		%]
+		
+			<tr>
+				<th>Rank</th>
+				<th>Username</th>
+				<th>Team Name</th>
+				<th>School</th>
+				<!-- for each problem create row header -->
+				[% FOREACH p IN problems %]
+					<th>[% p.p_id %]</th>
+				[% END %]
+				<th>Score</th>
+				
+				<!-- create row header for overall score -->
+			</tr>
+			[% x=0 %]
+			[% y=1 %]
+			[% FOREACH u IN users %]
+				[% LAST IF y > userCount %]
+				<tr id="score_row_[% sub.s_id %]">
+					<td class="rank">[% scoreboard.$x.rank %]</td>
+					<td class="username">[% HTML.escape(scoreboard.$x.username) %]</td>
+					<td class="team_name">[% HTML.escape(scoreboard.$x.team_name) %]</td>
+					<td class="school">[% HTML.escape(scoreboard.$x.school) %]</td>
+					[% FOREACH p IN problems %]
+						<td>
+							[% IF scoreboard.$x.best==100 %]1[% ELSE %]0[% END %]/[% scoreboard.$x.tries %]
+						</td>
+						[% z=x %]
+						[% x=x+1 %]
+					[% END %]
+					<td>
+						[% IF scoreboard.$z.solved %][% scoreboard.$z.solved %][% ELSE %]0[% END %]/[% IF scoreboard.$z.submits %][% scoreboard.$z.submits %][% ELSE %]0[% END %]
+					</td>
+				</tr>
+				[% y=y+1 %]
+			[% END %]
+		</table>
+	</div>
+	
+</div>

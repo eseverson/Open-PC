@@ -1,0 +1,159 @@
+<div id="create_user" class="ui-widget-content ui-corner-all" title="Create User">
+	[% USE CGI;
+		CGI.start_form(
+			id => 'create_user_form',
+			action => 'javascript:true;',
+		);
+	%]
+		<input type="hidden" name="action" value="create_user">
+		<table border="0">
+			<tr>
+				<td width="130"><strong>User Type</strong></td>
+				<td>
+					<select name="user_type" style="width:100px" class="c_user">
+						<option value="1">Admin</option>
+						<option value="2">Judge</option>
+						<option selected="selected" value="3">Team</option>
+					</select>
+				</td>
+				<td id="type_req" class="req problems"></td>
+			</tr>
+			<tr>
+				<td width="130"><strong>Username</strong></td>
+				<td>
+					<input type="text" name="username" size="40" maxlength="30"	class="c_user" />
+				</td>
+				<td id="c_username_req" class="req problems"></td>
+			</tr>
+			<tr>
+				<td width="130"><strong>Password</strong></td>
+				<td>
+					<input type="password" name="password" size="40" maxlength="30"	class="c_user" />
+				</td>
+				<td id="c_password_req" class="req problems"></td>
+			</tr>
+			<tr>
+				<td width="130"><strong>Password Again</strong></td>
+				<td>
+					<input type="password" name="password_again" size="40" maxlength="30" class="c_user" />
+				</td>
+				<td id="c_pw_rep_req" class="req problems"></td>
+			</tr>
+			<tr>
+				<td width="130"><strong>Team Name</strong></td>
+				<td>
+					<input type="text" name="team_name" size="40" maxlength="40" class="c_user team_field" />
+				</td>
+				<td id="c_team_req" class="req problems"></td>
+			</tr>
+			<tr>
+				<td width="130"><strong>School</strong></td>
+				<td>
+					<input type="text" name="school" size="40" maxlength="40" class="c_user team_field" />
+				</td>
+				<td id="c_school_req" class="req problems"></td>
+			</tr>
+		</table>
+		<input id="c_user_keep" class="c_user" type="checkbox" >Keep Open</input>
+		<img class="c_loading" src="/~evan/images/ajax-loader.gif" style="display: none;"/>
+		<div id="createUserError" class="c_user problems ui-state-error">
+			<div id="createUserErrorMessage" class= "c_user" style="display:none;">
+			</div>
+		</div>
+	[% USE CGI;
+		CGI.end_form;
+	%]
+</div>
+
+
+<div id="modify_user" class="ui-widget-content ui-corner-all" title="Modify User">
+	[% USE CGI;
+		CGI.start_form(
+			id => 'modify_user_form',
+			action => 'javascript:true;',
+		);
+	%]
+		<input type="hidden" name="action" value="modify_user">
+		<input type="hidden" name="u_id" id="modify_user_u_id" value="">
+		
+		<table border="0">
+			<tr>
+				<td width="130"><strong>User Type</strong></td>
+				<td id="m_user_type"></td>
+			</tr>
+			<tr>
+				<td width="130"><strong>Username</strong></td>
+				<td>
+					<input type="text" name="username" size="40" maxlength="30"	class="m_user" />
+				</td>
+				<td id="m_username_req" class="req problems"></td>
+			</tr>
+			<tr>
+				<td width="130"><strong>Password</strong> (Optional)</td>
+				<td>
+					<input type="password" name="password" size="40" maxlength="30"	class="m_user" />
+				</td>
+				<td id="m_password_req" class="req problems"></td>
+			</tr>
+			<tr>
+				<td width="130"><strong>Password Again</strong></td>
+				<td>
+					<input type="password" name="password_again" size="40" maxlength="30" class="m_user" />
+				</td>
+				<td id="m_pw_rep_req" class="req problems"></td>
+			</tr>
+			<tr>
+				<td width="130"><strong>Team Name</strong></td>
+				<td>
+					<input type="text" name="team_name" size="40" maxlength="40" class="m_user team_field" />
+				</td>
+				<td id="m_team_req" class="req problems"></td>
+			</tr>
+			<tr>
+				<td width="130"><strong>School</strong></td>
+				<td>
+					<input type="text" name="school" size="40" maxlength="40" class="m_user team_field" />
+				</td>
+				<td id="m_school_req" class="req problems"></td>
+			</tr>
+		</table>		
+		<img class="m_loading" src="/~evan/images/ajax-loader.gif" style="display: none;"/>
+		<div id="modifyUserError" class="m_user problems ui-state-error">
+			<div id="modifyUserErrorMessage" class= "m_user" style="display:none;"></div>
+		</div>
+	[% USE CGI;
+		CGI.end_form;
+	%]
+</div>
+
+
+<div id="delete_user" title="Delete User?">
+	[% USE CGI;
+		CGI.start_form(
+			id => 'delete_user_form',
+			action => 'javascript:true;',
+		);
+	%]
+	<input type="hidden" name="action" value="delete_user">
+	<input type="hidden" name="u_id" id="delete_user_u_id" value="">
+	<p>
+		<span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>
+		This will permanently delete user <strong id="d_user_username" class="inline"></strong>. Are you sure?
+	</p>
+	
+	<img class="d_loading" src="/~evan/images/ajax-loader.gif" style="display: none;"/>
+	<div id="deleteUserError" class="d_user problems ui-state-error">
+		<div id="deleteUserErrorMessage" class= "d_user" style="display:none;"></div>
+	</div>
+	[% USE CGI;
+		CGI.end_form;
+	%]
+</div>
+
+<div id="delete_user_failed" title="Delete failed" class="ui-state-error">
+	<p>
+		<span class="ui-icon ui-icon-notice" style="float:left; margin:0 7px 50px 0;"></span>
+		<strong>Error Communicating with the server.  User was not deleted.</strong>
+	</p>
+</div>
+

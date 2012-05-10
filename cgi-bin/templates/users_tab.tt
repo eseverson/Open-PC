@@ -1,0 +1,59 @@
+<div id="users">
+	[% IF type == 1 %]
+		<span class="button_container"><a id="adduser">Add User</a></span>
+		<div style="height: 5px;">&nbsp;</div>
+	[% END %]
+	
+	<div>
+		<table id="users_table" border="1" cellspacing="0">
+			<tr id="user_row_template" style="display: none;">
+				<td class="u_id"></td>
+				<td class="username"></td>
+				<td class="team_name"></td>
+				<td class="school"></td>
+				<td class="user_type"></td>
+				<td class="mod-buttons" style="border:none;">
+					<div style="display:inline-block;">
+						<span value="" class="user-edit-button ui-icon ui-icon-pencil mod-buttons" style="border: none !important;"></span>
+						<span value="" class="user-delete-button ui-icon ui-icon-trash mod-buttons"><span>
+					</div>
+				</td>
+			</tr>
+			
+			<tr>
+				<th>uid</th>
+				<th>Username</th>
+				<th>Team Name</th>
+				<th>School</th>
+				<th>User Type</th>
+				[% IF type == 1 %]
+					<th style="width: 32px; border: none;"></th>
+				[% END %]
+			</tr>
+			[% FOREACH usr IN users %]
+				<tr id="row_[% usr.u_id %]">
+					[% x=0 %]
+					[% this_type=usr.user_type %]
+					<td class="u_id">[% usr.u_id %]</td>
+					<td class="username">[% HTML.escape(usr.username) %]</td>
+					<td class="team_name">[% IF usr.user_type != '3' %]-[% ELSE %][% HTML.escape(usr.team_name) %][% END %]</td>
+					<td class="school">[% IF usr.user_type != '3' %]-[% ELSE %][% HTML.escape(usr.school) %][% END %]</td>
+					<td class="user_type">[% types.$this_type %]</td>
+					[% IF type == 1 %]
+						<td class="mod-buttons" style="border:none;">
+							<div style="display:inline-block;">
+								<span value="[% usr.u_id %]" class="user-edit-button ui-icon ui-icon-pencil mod-buttons" style="border: none !important;" ></span>
+								<span value="[% usr.u_id %]" class="user-delete-button ui-icon ui-icon-trash mod-buttons" ></span>
+							</div>
+						</td>
+					[% END %]
+				</tr>
+			[% END %]
+		</table>
+	</div>
+	
+	[% PROCESS user_dialogs.tt %]
+	
+</div>
+
+

@@ -1,0 +1,36 @@
+<table cellpadding="2" cellspacing="0" border="0" id="maincontent">
+	<tr>
+		<td align="center" valign="middle">
+			<div id="logo">
+				<H2>Programming Competition Login</H2>
+			</div>
+			<br />
+			<div class="login">
+				<form action="/~evan/cgi-bin/competition.pl" method="post">
+					<input type="hidden" name="action" value="login">
+					<table cellpadding="2"  cellspacing="2" border="0" align="center">
+						<tr>
+							<td align="right"><label for="username">Username</label> </td>
+							<td align="left"> <input type="text" name="username" size="20" maxlength="30"></td>
+						</tr>
+						<tr>
+							<td align="right"><label for="password">Password</label> </td>
+							<td align="left"><input type="password" name="password" size="20" maxlength="90"></td>
+						</tr>
+						<tr>
+							<td colspan="2" align="center"><button id="loginButton">Login</button></td>
+						</tr>
+						[% IF failed==1 %]
+						<tr>
+							<td colspan=2>
+								<div class="ui-state-error ui-corner-all" style="display:inline-block;">
+									<span class="ui-icon ui-icon-alert" style=" margin-right: .3em; display:inline-block; vertical-align:middle;" ></span><p style="display:inline;">Invalid login.</p>
+								</div>
+							</td>
+						</tr>
+						[% END %]
+					</table>
+				</form>
+			</div>
+	</tr>
+</table>
