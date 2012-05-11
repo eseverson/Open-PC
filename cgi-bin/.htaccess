@@ -1,4 +1,4 @@
-Options +ExecCGI +FollowSymLinks
+Options +ExecCGI +FollowSymLinks -Indexes
 AddHandler cgi-script .pl
 
 RewriteEngine On
