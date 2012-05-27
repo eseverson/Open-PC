@@ -40,4 +40,3 @@ Add an administration page to allow the admin to:
 Adding the use of WebSockets to the page so the user does not need to refresh it in order to see updates for things like the scoreboard, clarifications, and contest state (started/stopped/countdown)
 	Make it so that the user is not waiting on the server to respond when submitting a solution
 Clock for timed competition showing time until start/time remaining
-
