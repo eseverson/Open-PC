@@ -36,7 +36,7 @@ To run the server you will need the following (the following is what I have test
 ### MySQL
 - Create a user (if you use the user 'evan' and password 'password' you wont have to edit any of the source files which the MySQL credentials are currently hardcoded into)
 > my $db = DBI->connect( 'DBI:mysql:competition:127.0.0.1', 'evan', 'password');
-- Create the required tables (the commands required are in `sql/competition_db.sql`)
+- Create the required tables (the commands required are in `examples/sql/competition_db.sql`)
 - Grant the user permissions on the newly created database and tables
 
 ### Apache2
