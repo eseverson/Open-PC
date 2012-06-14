@@ -10,26 +10,26 @@ Bugs are tracked on [GitHub](https://github.com/leachlife4/Open-PC).
 License: GNU GPLv3+
 
 Getting Started
----------------
+  --------------
 
 # Setting up the Server
 ## Installing Services
 My setup has thus far been on an Ubuntu server, but could be run on some other distro with minimal effort.
 To run the server you will need the following (the following is what I have tested with; other servers/daemons could be use but woult probably take more work on your own to get working):
 - Apache2
--- mod-ssl
--- mod-rewrite
--- mod-cgi
+  - mod-ssl
+  - mod-rewrite
+  - mod-cgi
 - MySQL
 - Perl & all the modules being used in the perl scripts -- here is a list which is not necessarily complete:
--- CGI, CGI::Carp, CGI::Session
--- DBI
--- Template, Template::Plugin::CGI
--- File::Path
--- IPC::Open3, IPC::Open2
--- JSON
--- Switch
--- String::Random
+  - CGI, CGI::Carp, CGI::Session
+  - DBI
+  - Template, Template::Plugin::CGI
+  - File::Path
+  - IPC::Open3, IPC::Open2
+  - JSON
+  - Switch
+  - String::Random
 - Java/JDK (for executing submitted code)
 
 ## Configuring Services
