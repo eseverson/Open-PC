@@ -35,13 +35,13 @@ To run the server you will need the following (the following is what I have test
 ## Configuring Services
 ### MySQL
 - Create a user (if you use the user 'evan' and password 'password' you wont have to edit any of the source files which the MySQL credentials are currently hardcoded into)
-> my $db = DBI->connect( 'DBI:mysql:competition:127.0.0.1', 'evan', 'password');
+  > `my $db = DBI->connect( 'DBI:mysql:competition:127.0.0.1', 'evan', 'password');`
 - Create the required tables (the commands required are in `examples/sql/competition_db.sql`)
 - Grant the user permissions on the newly created database and tables
 
 ### Apache2
 - Enable the required modules
-- Setup and enable a site (including ssl) to be used by the competition server and point it to the source dir
+- Setup and enable a site (including ssl) to be used by the competition server and point it to the source dir where you have cloned the source to
 - Make sure that the user which the CGI scripts will be run by has write access to `filestore/`
 
 ## Testing the Server
