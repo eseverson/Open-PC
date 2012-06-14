@@ -67,7 +67,7 @@ sub clearSubs {
 	my $clearSubs = "DELETE FROM submission;";
 	my $preped = $db->prepare($clearSubs);
 	$preped->execute();
-	system("rm -rf /home/evan/public_html/filestore/submissions/*");
+	system("rm -rf ../filestore/submissions/*");
 	
 	basic_response(1, "Submissions cleared");
 	return;
@@ -91,7 +91,7 @@ sub deleteSub {
 		$preped = $db->prepare($clearSubs);
 		$preped->execute($s_id);
 		
-		remove_tree("/home/evan/public_html/filestore/submissions/$s_id");
+		remove_tree("../filestore/submissions/$s_id");
 		my $response = {
 			statuskey => ['fail', 'success'], 	
 			status => 1,
@@ -139,9 +139,9 @@ sub submitProblem{
 		
 		my $s_id = $db->last_insert_id(0,0,0,"s_id");
 		
-		unless(mkdir("/home/evan/public_html/filestore/submissions/$s_id", 0777) &&
-					 open(SOURCE, ">", "/home/evan/public_html/filestore/submissions/$s_id/Main.java")){
-			remove_tree("/home/evan/public_html/filestore/submissions/$s_id");
+		unless(mkdir("../filestore/submissions/$s_id", 0777) &&
+					 open(SOURCE, ">", "../filestore/submissions/$s_id/Main.java")){
+			remove_tree("../filestore/submissions/$s_id");
 			$db->rollback();
 			basic_response(0, "Internal server error. Problem not submitted."); 
 			return;
@@ -154,7 +154,7 @@ sub submitProblem{
 		
 		#compile
 
-		chdir("/home/evan/public_html/filestore/submissions/$s_id");
+		chdir("../filestore/submissions/$s_id");
 		#my $null;
 		#open($null, ">", File::Spec->devnull);
 		my ($in, $out, $err);
@@ -168,7 +168,7 @@ sub submitProblem{
 			$judgement = '10';
 		}else{
 			#run
-			open(PROB_INPUT, "<", "/home/evan/public_html/filestore/problems/$p_id/input.txt") or die "Couldn't open input file.";
+			open(PROB_INPUT, "<", "../filestore/problems/$p_id/input.txt") or die "Couldn't open input file.";
 			
 			eval{
 				local $SIG{ALRM} = sub{
@@ -191,7 +191,7 @@ sub submitProblem{
 				$judgement = '20';
 			}else{
 				warn "Successful run, s_id: $s_id, pid: $pid";
-				open(OUTPUT, ">", "/home/evan/public_html/filestore/submissions/$s_id/out.txt");
+				open(OUTPUT, ">", "../filestore/submissions/$s_id/out.txt");
 				while(<$out>){
 					#strip trailing whitespace
 					$_ =~ /^(.*?)\s*$/;
@@ -202,8 +202,8 @@ sub submitProblem{
 				#diff
 				warn "Diffing output, s_id: $s_id";
 				
-				open(ACTUAL, "<", "/home/evan/public_html/filestore/submissions/$s_id/out.txt");
-				open(EXPECTED, "<", "/home/evan/public_html/filestore/problems/$p_id/output.txt");
+				open(ACTUAL, "<", "../filestore/submissions/$s_id/out.txt");
+				open(EXPECTED, "<", "../filestore/problems/$p_id/output.txt");
 				
 				my $wrong_answer = 0;
 				my ($a, $e);
@@ -273,7 +273,7 @@ sub deleteProblem{
 	if( !$rv || $rv == 0 ){
 		basic_response(0, "Problem $p_id not found");
 	}else{
-		remove_tree("/home/evan/public_html/filestore/problems/$p_id");
+		remove_tree("../filestore/problems/$p_id");
 		print $json->encode({
 			statuskey => ['fail', 'success'],
 			status => 1,
@@ -312,8 +312,8 @@ sub modifyProblem{
 		
 		my ($INPUT, $OUTPUT);
 		
-		unless((!$input_name || open($INPUT, ">", "/home/evan/public_html/filestore/problems/$p_id/_input.txt"))&& 
-					 (!$output_name || open($OUTPUT, ">", "/home/evan/public_html/filestore/problems/$p_id/_output.txt"))){
+		unless((!$input_name || open($INPUT, ">", "../filestore/problems/$p_id/_input.txt"))&& 
+					 (!$output_name || open($OUTPUT, ">", "../filestore/problems/$p_id/_output.txt"))){
 			close(INPUT);
 			close(OUTPUT);
 			#rm _input and _output
@@ -325,7 +325,7 @@ sub modifyProblem{
 		if($INPUT){
 			while(<$R::problem_input>){print $INPUT $_;}
 			close($INPUT);
-			rename("/home/evan/public_html/filestore/problems/$p_id/_input.txt","/home/evan/public_html/filestore/problems/$p_id/input.txt");
+			rename("../filestore/problems/$p_id/_input.txt","../filestore/problems/$p_id/input.txt");
 		}
 		if($OUTPUT){
 			while(<$R::problem_output>){
@@ -334,7 +334,7 @@ sub modifyProblem{
 				print $OUTPUT $1."\n";
 			}
 			close($OUTPUT);
-			rename("/home/evan/public_html/filestore/problems/$p_id/_output.txt","/home/evan/public_html/filestore/problems/$p_id/output.txt");
+			rename("../filestore/problems/$p_id/_output.txt","../filestore/problems/$p_id/output.txt");
 		}
 		
 		$db->commit();
@@ -379,12 +379,12 @@ sub createProblem {
 		
 		my $p_id = $db->last_insert_id(0,0,0,"p_id");
 		
-		unless(mkdir("/home/evan/public_html/filestore/problems/$p_id", 0777) &&
-					 open(INPUT, ">", "/home/evan/public_html/filestore/problems/$p_id/input.txt")&& 
-					 open(OUTPUT, ">", "/home/evan/public_html/filestore/problems/$p_id/output.txt")){
+		unless(mkdir("../filestore/problems/$p_id", 0777) &&
+					 open(INPUT, ">", "../filestore/problems/$p_id/input.txt")&& 
+					 open(OUTPUT, ">", "../filestore/problems/$p_id/output.txt")){
 			close(INPUT);
 			close(OUTPUT);
-			remove_tree("/home/evan/public_html/filestore/problems/$p_id");
+			remove_tree("../filestore/problems/$p_id");
 			$db->rollback();
 			basic_response(0, "Internal server error. Problem not added"); 
 			return;
@@ -433,8 +433,8 @@ sub showProblem {
 	$preped->execute($p_id);
 	
 	if($preped->rows) {
-		unless(open(INPUT, "<", "/home/evan/public_html/filestore/problems/$p_id/input.txt")&& 
-					 open(OUTPUT, "<", "/home/evan/public_html/filestore/problems/$p_id/output.txt")){
+		unless(open(INPUT, "<", "../filestore/problems/$p_id/input.txt")&& 
+					 open(OUTPUT, "<", "../filestore/problems/$p_id/output.txt")){
 			close(INPUT);
 			close(OUTPUT);
 			basic_response(0, "Internal server error."); 

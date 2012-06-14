@@ -55,7 +55,7 @@
 			</tr>
 		</table>
 		<input id="c_user_keep" class="c_user" type="checkbox" >Keep Open</input>
-		<img class="c_loading" src="/~evan/images/ajax-loader.gif" style="display: none;"/>
+		<img class="c_loading" src="/images/ajax-loader.gif" style="display: none;"/>
 		<div id="createUserError" class="c_user problems ui-state-error">
 			<div id="createUserErrorMessage" class= "c_user" style="display:none;">
 			</div>
@@ -117,7 +117,7 @@
 				<td id="m_school_req" class="req problems"></td>
 			</tr>
 		</table>		
-		<img class="m_loading" src="/~evan/images/ajax-loader.gif" style="display: none;"/>
+		<img class="m_loading" src="/images/ajax-loader.gif" style="display: none;"/>
 		<div id="modifyUserError" class="m_user problems ui-state-error">
 			<div id="modifyUserErrorMessage" class= "m_user" style="display:none;"></div>
 		</div>
@@ -141,7 +141,7 @@
 		This will permanently delete user <strong id="d_user_username" class="inline"></strong>. Are you sure?
 	</p>
 	
-	<img class="d_loading" src="/~evan/images/ajax-loader.gif" style="display: none;"/>
+	<img class="d_loading" src="/images/ajax-loader.gif" style="display: none;"/>
 	<div id="deleteUserError" class="d_user problems ui-state-error">
 		<div id="deleteUserErrorMessage" class= "d_user" style="display:none;"></div>
 	</div>

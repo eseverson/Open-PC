@@ -32,7 +32,7 @@
 				</tr>
 			</table>
 			<input id="c_problem_keep" class="c_problem" type="checkbox" >Keep Open</input>
-			<img class="c_loading problem" src="/~evan/images/ajax-loader.gif" style="display: none;"/>
+			<img class="c_loading problem" src="/images/ajax-loader.gif" style="display: none;"/>
 			<div id="createProblemError" class="c_problem problems ">
 				<div id="createProblemErrorMessage" class= "c_problem ui-state-error" style="display:none;"></div>
 			</div>
@@ -74,7 +74,7 @@
 					<td id="m_output_req" class="req problems"></td>
 				</tr>
 			</table>
-			<img class="m_loading problem" src="/~evan/images/ajax-loader.gif" style="display: none;"/>
+			<img class="m_loading problem" src="/images/ajax-loader.gif" style="display: none;"/>
 			<div id="createProblemError" class="m_problem problems ">
 				<div id="createProblemErrorMessage" class= "m_problem ui-state-error" style="display:none;"></div>
 			</div>
@@ -98,7 +98,7 @@
 				This will permanently delete problem <strong id="d_problem_problemname" class="inline">adsfasfdfadsf</strong>. Are you sure?
 			</p>
 			
-			<img class="d_problem_loading" src="/~evan/images/ajax-loader.gif" style="display: none;"/>
+			<img class="d_problem_loading" src="/images/ajax-loader.gif" style="display: none;"/>
 			<div id="deleteProblemError" class="d_problem problems ui-state-error">
 				<div id="deleteProblemErrorMessage" class= "d_problem" style="display:none;"></div>
 			</div>
@@ -140,7 +140,7 @@
 					<td id="p_source_req" class="req problems"></td>
 				</tr>
 			</table>
-			<img class="c_loading problem" src="/~evan/images/ajax-loader.gif" style="display: none;"/>
+			<img class="c_loading problem" src="/images/ajax-loader.gif" style="display: none;"/>
 			<div id="submitProblemError" class="s_problem problems">
 				<div id="submitProblemErrorMessage" class= "s_problem ui-state-error" style="display:none;">&nbsp;</div>
 			</div>

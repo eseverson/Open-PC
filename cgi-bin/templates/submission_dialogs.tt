@@ -13,7 +13,7 @@
 				This will permanently delete <strong id="d_problem_problemname" class="inline">ALL</strong> submissions. Are you sure?
 			</p>
 			
-			<img class="c_sub_loading" src="/~evan/images/ajax-loader.gif" style="display: none;"/>
+			<img class="c_sub_loading" src="/images/ajax-loader.gif" style="display: none;"/>
 			<div id="clearSubError" class="c_sub sum ui-state-error" style="display:none;">
 				<div id="clearSubErrorMessage" class= "c_sub" style="display:none;">&nbsp;</div>
 			</div>
@@ -46,7 +46,7 @@
 				This will permanently delete submission <strong id="d_sub_s_id" class="inline">a</strong>. Are you sure?
 			</p>
 			
-			<img class="d_sub_loading" src="/~evan/images/ajax-loader.gif" style="display: none;"/>
+			<img class="d_sub_loading" src="/images/ajax-loader.gif" style="display: none;"/>
 			<div id="deleteSubError" class="d_problem problems ui-state-error">
 				<div id="deleteSubErrorMessage" class= "d_sub" style="display:none;"></div>
 			</div>

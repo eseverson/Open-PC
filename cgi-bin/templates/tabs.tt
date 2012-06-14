@@ -9,7 +9,7 @@
 <div id="tabs">
 	<div style="height: 3px;">&nbsp;</div>
 	<div class="header-line">&nbsp;Welcome to the competition, <strong>[% HTML.escape(user) %].</strong></div>
-	<div class="header-line right">Your account type is: <strong>[% HTML.escape(types.$type) %]</strong> - <a href="/~evan/cgi-bin/login.pl?action=logout">Logout</a>&nbsp;</div>
+	<div class="header-line right">Your account type is: <strong>[% HTML.escape(types.$type) %]</strong> - <a href="/cgi-bin/login.pl?action=logout">Logout</a>&nbsp;</div>
 	<div style="height: 5px;">&nbsp;</div>
 
 	<ul>

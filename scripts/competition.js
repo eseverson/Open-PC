@@ -239,7 +239,7 @@ $(document).ready(function(){
 				
 		$.ajax({
 			'type':'POST',
-			'url':'/~evan/cgi-bin/manageProblem.pl',
+			'url':'manageProblem.pl',
 			'async':true,
 			'success':function(a){
 				$("#createProblemErrorMessage").hide();
@@ -324,7 +324,7 @@ $(document).ready(function(){
 	$("#delete_problem_form").submit(function(e){
 		$.ajax({
 			'type':'POST',
-			'url':'/~evan/cgi-bin/manageProblem.pl',
+			'url':'manageProblem.pl',
 			'async':true,
 			'success':function(a){
 				$("#deleteUserError").hide();
@@ -376,7 +376,7 @@ $(document).ready(function(){
 		
 		$.ajax({
 			'type':'POST',
-			'url':'/~evan/cgi-bin/manageUser.pl',
+			'url':'manageUser.pl',
 			'async':true,
 			'success':function(a){
 				$("#createUserErrorMessage").hide();
@@ -427,7 +427,7 @@ $(document).ready(function(){
 	$("#delete_user_form").submit(function(e) {
 		$.ajax({
 			'type':'POST',
-			'url':'/~evan/cgi-bin/manageUser.pl',
+			'url':'manageUser.pl',
 			'async':true,
 			'success':function(a){
 				$("#deleteUserError").hide();
@@ -501,7 +501,7 @@ $(document).ready(function(){
 		
 		$.ajax({
 			'type':'POST',
-			'url':'/~evan/cgi-bin/manageUser.pl',
+			'url':'manageUser.pl',
 			'async':true,
 			'success':function(a){
 				$("#modifyUserErrorMessage").hide();
@@ -559,7 +559,7 @@ $(document).ready(function(){
 		
 		$.ajax({
 			'type':'POST',
-			'url':'/~evan/cgi-bin/manageProblem.pl',
+			'url':'manageProblem.pl',
 			'async':true,
 			'cache': false,
 			'processData': false,
@@ -622,7 +622,7 @@ $(document).ready(function(){
 
 		$.ajax({
 			'type':'POST',
-			'url':'/~evan/cgi-bin/manageProblem.pl',
+			'url':'manageProblem.pl',
 			'async':true,
 			'cache': false,
 			'processData': false,
@@ -658,7 +658,7 @@ $(document).ready(function(){
 	$("#clear_submissions_form").submit(function(e){
 		$.ajax({
 			'type':'POST',
-			'url':'/~evan/cgi-bin/manageProblem.pl',
+			'url':'manageProblem.pl',
 			'async':true,
 			'success':function(a){
 				$("#deleteUserError").hide();
@@ -688,7 +688,7 @@ $(document).ready(function(){
 	$("#delete_sub_form").submit(function(e){
 		$.ajax({
 			'type':'POST',
-			'url':'/~evan/cgi-bin/manageProblem.pl',
+			'url':'manageProblem.pl',
 			'async':true,
 			'success':function(a){
 				$("#deleteSubError").hide();
@@ -717,7 +717,7 @@ $(document).ready(function(){
 		
 		$.ajax({
 			'type':'POST',
-			'url':'/~evan/cgi-bin/manageProblem.pl',
+			'url':'manageProblem.pl',
 			'async':true,
 			'cache': false,
 			'processData': false,

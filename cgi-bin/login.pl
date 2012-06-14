@@ -28,27 +28,27 @@ if($session && $session->param("u_id")){ #if session active
 	if(!$u_id) {
 		warn "Bad Login";
 		$session->clear();
-		print $q->redirect( -URL => "/~evan/cgi-bin/login.pl?failed_login=1" );
+		print $q->redirect( -URL => "/cgi-bin/login.pl?failed_login=1" );
 		exit;
 	}else{
-		print $q->redirect( -URL => "http://192.168.1.10/~evan/cgi-bin/competition.pl" );
+		print $q->redirect( -URL => "/cgi-bin/competition.pl" );
 	}
 }else{
 	print $session->header(),
 				$q->start_html(
 					-title	=> 'Programming Competition',
 					-author	=> 'ejs092020@utdallas.edu',
-					-style	=> [{'src' => '/~evan/css/redmond/jquery-ui-1.8.19.custom.css'},
-											{'src' => '/~evan/styles/default.css'}],
+					-style	=> [{'src' => '/css/redmond/jquery-ui-1.8.19.custom.css'},
+											{'src' => '/styles/default.css'}],
 					-script => 
-						[{-type => 'text/JavaScript', -src => "/~evan/js/jquery-1.7.2.min.js"},
-						 {-type => 'text/JavaScript', -src => "/~evan/js/jquery-ui-1.8.19.custom.min.js"},
-						 {-type => 'text/JavaScript', -src => "/~evan/scripts/login.js"}],
+						[{-type => 'text/JavaScript', -src => "/js/jquery-1.7.2.min.js"},
+						 {-type => 'text/JavaScript', -src => "/js/jquery-ui-1.8.19.custom.min.js"},
+						 {-type => 'text/JavaScript', -src => "/scripts/login.js"}],
 
 				);
 
 	my $tt = new Template({
-		INCLUDE_PATH => '/home/evan/public_html/cgi-bin/templates',
+		INCLUDE_PATH => './templates',
 		INTERPOLATE => 1,
 		EVAL_PERL => 1,
 	}) || die "$Template::ERROR\n";

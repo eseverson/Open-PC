@@ -27,7 +27,7 @@ if(!$session->param("u_id")){
 	#warn "No session active, try to log in and set one up\n";
 	if(($R::action && $R::action ne "login") ||  !$R::username || !$R::password){
 		#warn "No session active, username or password not present in request\n";
-		print $q->redirect( -URL => "$base_url/~evan/cgi-bin/login.pl" );
+		print $q->redirect( -URL => "$base_url/cgi-bin/login.pl" );
 		exit;
 	}
 	
@@ -40,7 +40,7 @@ if(!$session->param("u_id")){
 		warn "Bad Login";
 		$session->clear();
 		#$session->flush();
-		print $q->redirect( -URL => "$base_url/~evan/cgi-bin/login.pl?failed_login=1" );
+		print $q->redirect( -URL => "$base_url/cgi-bin/login.pl?failed_login=1" );
 		exit;
 	}else {
 		#setup session
@@ -61,7 +61,7 @@ if(!$session->param("u_id")){
 		warn "Password changed since session initilization, expiring session.";
 		$session->expire();
 		$session->flush();
-		print $q->redirect( -URL => "$base_url/~evan/cgi-bin/login.pl" );
+		print $q->redirect( -URL => "$base_url/cgi-bin/login.pl" );
 		exit;
 	}
 }
@@ -144,17 +144,17 @@ print $session->header();
 print $q->start_html(
 				-title	=> 'Programming Competition',
 				-author	=> 'ejs092020@utdallas.edu',
-				-style	=> [{'src' => "$base_url/~evan/css/redmond/jquery-ui-1.8.19.custom.css"},
-										{'src' => "$base_url/~evan/styles/default.css"}],
+				-style	=> [{'src' => "$base_url/css/redmond/jquery-ui-1.8.19.custom.css"},
+										{'src' => "$base_url/styles/default.css"}],
 				-script => 
-				[{-type => 'text/JavaScript', -src => "$base_url/~evan/js/jquery-1.7.2.min.js"},
-				 {-type => 'text/JavaScript', -src => "$base_url/~evan/js/jquery-ui-1.8.19.custom.min.js"},
-				 {-type => 'text/JavaScript', -src => "$base_url/~evan/js/jquery.cookie.js"},
-				 {-type => 'text/JavaScript', -src => "$base_url/~evan/scripts/competition.js"}],
+				[{-type => 'text/JavaScript', -src => "$base_url/js/jquery-1.7.2.min.js"},
+				 {-type => 'text/JavaScript', -src => "$base_url/js/jquery-ui-1.8.19.custom.min.js"},
+				 {-type => 'text/JavaScript', -src => "$base_url/js/jquery.cookie.js"},
+				 {-type => 'text/JavaScript', -src => "$base_url/scripts/competition.js"}],
 );
 							
 my $tt = new Template({
-	INCLUDE_PATH => '/home/evan/public_html/cgi-bin/templates',
+	INCLUDE_PATH => './templates',
 	INTERPOLATE => 1,
 	EVAL_PERL => 1,
 }) || die "$Template::ERROR\n";

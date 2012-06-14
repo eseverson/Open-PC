@@ -6,7 +6,7 @@
 			</div>
 			<br />
 			<div class="login">
-				<form action="/~evan/cgi-bin/competition.pl" method="post">
+				<form action="/cgi-bin/competition.pl" method="post">
 					<input type="hidden" name="action" value="login">
 					<table cellpadding="2"  cellspacing="2" border="0" align="center">
 						<tr>

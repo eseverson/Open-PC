@@ -4,7 +4,7 @@
 	CGI.start_html(
 					-title	=> 'Programming Competition',
 					-author	=> 'ejs092020@utdallas.edu',
-					-style	=> {'src' => '/~evan/styles/default.css'},
+					-style	=> {'src' => '/styles/default.css'},
 					-script => {-type => 'text/JavaScript', -src => "https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"},
 					-script => {-type => 'text/JavaScript', -src => "https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"}
 	);
